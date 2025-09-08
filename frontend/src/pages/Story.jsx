@@ -31,7 +31,7 @@ function Story() {
   }, [userName]);
 
   return (
-    <div className='w-full h-[100vh] bg-black flex justify-center items-center'>
+    <div className='w-full h-[100vh] bg-gradient-to-br from-gray-800 via-gray-900 to-black flex justify-center items-center'>
       <StoryCard storyData={storyData} />
     </div>
   );

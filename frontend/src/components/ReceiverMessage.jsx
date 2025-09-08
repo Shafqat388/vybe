@@ -28,7 +28,7 @@ function ReceiverMessage({ message, onReact }) {
 
       {/* Reaction Display */}
       {message.reaction && (
-        <div className='absolute top-[-10px] left-[-10px] bg-black text-white text-[14px] rounded-full px-2 py-[2px]'>
+        <div className='absolute top-[-10px] left-[-10px] bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white text-[14px] rounded-full px-2 py-[2px]'>
           {message.reaction}
         </div>
       )}

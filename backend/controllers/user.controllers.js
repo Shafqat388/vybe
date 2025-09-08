@@ -1,7 +1,9 @@
 import uploadOnCloudinary from "../config/cloudinary.js";
 import Notification from "../models/notification.model.js";
 import User from "../models/user.model.js";
+import Post from "../models/post.model.js"; // Make sure this exists
 import { getSocketId, io } from "../socket.js";
+import { v2 as cloudinary } from "cloudinary";
 
 // ✅ Get current user
 export const getCurrentUser = async (req, res) => {
@@ -197,5 +199,37 @@ export const deleteNotification = async (req, res) => {
     return res.status(200).json({ message: "Notification deleted successfully" });
   } catch (error) {
     return res.status(500).json({ message: `delete notification error ${error}` });
+  }
+};
+
+// ✅ 🔥 DELETE ACCOUNT + CLOUDINARY MEDIA
+export const deleteAccount = async (req, res) => {
+  try {
+    const userId = req.userId;
+
+    const user = await User.findById(userId);
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    // Delete profile image from Cloudinary
+    if (user.profileImagePublicId) {
+      await cloudinary.uploader.destroy(user.profileImagePublicId);
+    }
+
+    // Delete all posts and their media from Cloudinary
+    const posts = await Post.find({ createdBy: userId });
+    for (const post of posts) {
+      if (post.mediaPublicId) {
+        await cloudinary.uploader.destroy(post.mediaPublicId);
+      }
+    }
+    await Post.deleteMany({ createdBy: userId });
+
+    // Delete the user
+    await User.findByIdAndDelete(userId);
+
+    return res.status(200).json({ message: "Account deleted successfully" });
+  } catch (error) {
+    console.error("Delete Account Error:", error);
+    return res.status(500).json({ message: "Server error while deleting account" });
   }
 };

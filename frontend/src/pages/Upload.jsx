@@ -115,7 +115,7 @@ function Upload() {
   const canUploadLoop = uploadType === "loop" && backendMedia;
 
   return (
-    <div className='w-full h-screen overflow-y-auto bg-black flex flex-col items-center pb-[100px]'>
+    <div className='w-full h-screen overflow-y-auto bg-gradient-to-br from-gray-800 via-gray-900 to-black flex flex-col items-center pb-[100px]'>
       {/* Header */}
       <div className='w-full h-[80px] flex items-center gap-[20px] px-[20px]'>
         <MdOutlineKeyboardBackspace className='text-white cursor-pointer w-[25px] h-[25px]' onClick={() => navigate(`/`)} />
@@ -127,7 +127,7 @@ function Upload() {
         {["post", "story", "loop"].map(type => (
           <div
             key={type}
-            className={`${uploadType === type ? "bg-black text-white shadow-2xl shadow-black" : ""} w-[28%] h-[80%] flex justify-center items-center text-[19px] font-semibold hover:bg-black rounded-full hover:text-white cursor-pointer hover:shadow-2xl hover:shadow-black`}
+            className={`${uploadType === type ? "bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white shadow-2xl shadow-black" : ""} w-[28%] h-[80%] flex justify-center items-center text-[19px] font-semibold hover:bg-gradient-to-br from-gray-800 via-gray-900 to-black rounded-full hover:text-white cursor-pointer hover:shadow-2xl hover:shadow-black`}
             onClick={() => {
               setUploadType(type);
               setCaption("");

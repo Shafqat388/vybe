@@ -10,7 +10,7 @@ function Loops() {
   const { userData } = useSelector(state => state.user);
 
   return (
-    <div className='w-screen h-screen bg-black overflow-hidden flex justify-center items-center'>
+    <div className='w-screen h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-black overflow-hidden flex justify-center items-center'>
       <div className='w-full h-[80px] flex items-center gap-[20px] px-[20px] fixed top-[10px] left-[10px] z-[100]'>
         <MdOutlineKeyboardBackspace
           className='text-white cursor-pointer w-[25px] h-[25px]'

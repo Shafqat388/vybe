@@ -26,26 +26,14 @@ function SenderMessage({ message, onReact, onDelete }) {
 
       {/* Emoji Reaction Display */}
       {message.reaction && (
-        <div className='absolute top-[-10px] right-[-10px] bg-black text-white text-[14px] rounded-full px-2 py-[2px]'>
+        <div className='absolute top-[-10px] right-[-10px] bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white text-[14px] rounded-full px-2 py-[2px]'>
           {message.reaction}
         </div>
       )}
 
-      {/* Reaction & Delete Options */}
-      <div className='absolute top-[5px] left-[-40px] flex flex-col gap-2'>
-        <BsEmojiSmile
-          className='text-white cursor-pointer hover:scale-110'
-          onClick={() => setShowReactions(!showReactions)}
-        />
-        <MdDelete
-          className='text-red-500 cursor-pointer hover:scale-110'
-          onClick={onDelete}
-        />
-      </div>
-
-      {/* Reaction Picker */}
+      {/* Reaction Picker (below message) */}
       {showReactions && (
-        <div className='absolute top-[-50px] left-[-10px] bg-gray-800 rounded-lg px-2 py-1 flex gap-2 z-50'>
+        <div className='absolute left-0 bottom-[-40px] bg-gray-800 rounded-lg px-3 py-1 flex gap-2 z-50'>
           {emojiList.map((emoji, idx) => (
             <span
               key={idx}
@@ -64,6 +52,18 @@ function SenderMessage({ message, onReact, onDelete }) {
       {/* Profile Image */}
       <div className='w-[30px] h-[30px] rounded-full cursor-pointer overflow-hidden absolute right-[-25px] bottom-[-40px]'>
         <img src={userData.profileImage} alt="" className='w-full object-cover' />
+      </div>
+
+      {/* Reaction & Delete - bottom right inside bubble */}
+      <div className='flex justify-end items-center gap-3 mt-2'>
+        <BsEmojiSmile
+          className='text-white cursor-pointer hover:scale-110'
+          onClick={() => setShowReactions(!showReactions)}
+        />
+        <MdDelete
+          className='text-red-400 cursor-pointer hover:scale-110'
+          onClick={onDelete}
+        />
       </div>
     </div>
   );

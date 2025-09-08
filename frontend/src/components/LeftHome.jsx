@@ -25,7 +25,7 @@ const {notificationData}=useSelector(state=>state.user)
 
 
   return (
-    <div className={`w-[25%] hidden lg:block h-[100vh] bg-[black] border-r-2 border-gray-900  ${showNotification?"overflow-hidden":"overflow-auto"}`}>
+    <div className={`w-[25%] hidden lg:block h-[100vh] bg-gradient-to-br from-gray-800 via-gray-900 to-black   border-r-2 border-gray-900  ${showNotification?"overflow-hidden":"overflow-auto"}`}>
       <div className='w-full h-[100px] flex items-center justify-between p-[20px]'>
         <img src={logo} alt="" className='w-[80px]'/>
         <div className='relative z-[100]' onClick={()=>setShowNotification(prev=>!prev)}>

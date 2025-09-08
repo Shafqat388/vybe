@@ -91,26 +91,27 @@ function Post({ post }) {
   }, [socket, postData, dispatch]);
 
   return (
-    <div className='w-[90%] flex flex-col gap-[10px] bg-white items-center shadow-2xl shadow-[#00000058] rounded-2xl pb-[20px]'>
+    <div className='w-[90%] flex flex-col gap-[10px] bg-gradient-to-br from-[#2c3e50] to-[#4ca1af] text-white rounded-xl p-4 shadow-xl" items-center shadow-2xl shadow-[#00000058] rounded-2xl pb-[20px]'>
       
       {/* Header */}
       <div className='w-full h-[80px] flex justify-between items-center px-[10px]'>
-        <div className='flex justify-center items-center md:gap-[20px] gap-[10px] cursor-pointer'
+        <div className='flex justify-center items-center gap-[10px] cursor-pointer'
           onClick={() => navigate(`/profile/${post.author?.userName}`)}>
           <div className='w-[40px] h-[40px] md:w-[60px] md:h-[60px] border-2 border-black rounded-full overflow-hidden'>
             <img src={post.author?.profileImage || dp} alt="" className='w-full object-cover' />
           </div>
-          <div className='w-[150px] font-semibold truncate'>{post.author.userName}</div>
+          <div className='w-[150px] font-semibold text-black  text-xl hover:scale-105 transition-transfrom duration-200 cursor-pointer truncate'>{post.author.userName}</div>
         </div>
 
         {userData._id !== post.author._id ? (
           <FollowButton
-            tailwind={'px-[10px] minw-[60px] md:min-w-[100px] py-[5px] h-[30px] md:h-[40px] bg-[black] text-white rounded-2xl text-[14px] md:text-[16px]'}
+            tailwind={'px-[10px] minw-[60px] md:min-w-[100px] py-[5px] h-[30px] md:h-[40px] bg-gray-900 text-white rounded-2xl text-[14px] md:text-[16px]'}
             targetUserId={post.author._id}
           />
         ) : (
           <button
-            className="text-red-600 font-semibold text-sm md:text-base"
+            className=" px-[10px] minw-[60px] md:min-w-[100px] py-[5px] h-[30px] md:h-[40px] bg-gray-900 text-white  rounded-2xl text-[14px] md:text-[16px]"
+            
             onClick={handleDelete}
           >
             Delete
@@ -121,7 +122,7 @@ function Post({ post }) {
       {/* TEXT POST ONLY */}
       {!post.media && !post.mediaType && post.caption && (
         <div className='w-[90%] flex items-center justify-center min-h-[200px] mt-2'>
-          <div className='bg-gray-100 p-4 rounded-xl text-center text-black text-[18px] font-medium w-full'>
+          <div className='bg-gray-400 p-4 rounded-lg text-center text-black text-[18px] font-medium w-full'>
             {post.caption}
           </div>
         </div>
@@ -133,8 +134,8 @@ function Post({ post }) {
           {/* Caption on top */}
           {post.caption && (
             <div className='w-full px-[20px] flex flex-col items-start gap-[5px]'>
-              <span className='font-semibold'>{post.author.userName}</span>
-              <span className='text-[16px]'>{post.caption}</span>
+          
+              <span className='text-[15px] text-white/85 font-medium leading-snug italic tracking-wide'>{post.caption}</span>
             </div>
           )}
 

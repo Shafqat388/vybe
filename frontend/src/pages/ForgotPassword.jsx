@@ -77,7 +77,7 @@ const handleStep3=async ()=>{
 </div>
 
 {err && <p className='text-red-500'>{err}</p>}
-<button className='w-[70%] px-[20px] py-[10px] bg-black text-white font-semibold h-[50px] cursor-pointer rounded-2xl mt-[30px]'  disabled={loading} onClick={handleStep1}>{loading?<ClipLoader size={30} color='white'/>:"Send OTP"}</button>
+<button className='w-[70%] px-[20px] py-[10px] bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white font-semibold h-[50px] cursor-pointer rounded-2xl mt-[30px]'  disabled={loading} onClick={handleStep1}>{loading?<ClipLoader size={30} color='white'/>:"Send OTP"}</button>
       </div>}
 
       {step==2 && <div className='w-[90%] max-w-[500px]  h-[500px] bg-white rounded-2xl flex justify-center items-center flex-col   border-[#1a1f23]'>
@@ -88,7 +88,7 @@ const handleStep3=async ()=>{
     
 </div>
 {err && <p className='text-red-500'>{err}</p>}
-<button className='w-[70%] px-[20px] py-[10px] bg-black text-white font-semibold h-[50px] cursor-pointer rounded-2xl mt-[30px]'  disabled={loading} onClick={handleStep2}>{loading?<ClipLoader size={30} color='white'/>:"Submit"}</button>
+<button className='w-[70%] px-[20px] py-[10px] bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white font-semibold h-[50px] cursor-pointer rounded-2xl mt-[30px]'  disabled={loading} onClick={handleStep2}>{loading?<ClipLoader size={30} color='white'/>:"Submit"}</button>
       </div>}
 
       {step==3 && <div className='w-[90%] max-w-[500px]  h-[500px] bg-white rounded-2xl flex justify-center items-center flex-col   border-[#1a1f23]'>
@@ -104,7 +104,7 @@ const handleStep3=async ()=>{
     
 </div>
 {err && <p className='text-red-500'>{err}</p>}
-<button className='w-[70%] px-[20px] py-[10px] bg-black text-white font-semibold h-[50px] cursor-pointer rounded-2xl mt-[30px]'  disabled={loading} onClick={handleStep3}>{loading?<ClipLoader size={30} color='white'/>:"Reset Password"}</button>
+<button className='w-[70%] px-[20px] py-[10px] bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white font-semibold h-[50px] cursor-pointer rounded-2xl mt-[30px]'  disabled={loading} onClick={handleStep3}>{loading?<ClipLoader size={30} color='white'/>:"Reset Password"}</button>
       </div>}
       
     </div>

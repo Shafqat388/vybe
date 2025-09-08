@@ -39,7 +39,7 @@ function ChatbotWidget() {
       {open ? (
         <div className="w-[300px] h-[400px] bg-white shadow-lg rounded-lg flex flex-col overflow-hidden">
           {/* Header */}
-          <div className="bg-black text-white px-4 py-2 flex justify-between items-center">
+          <div className="bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white px-4 py-2 flex justify-between items-center">
             <span>AI Chatbot</span>
             <button onClick={() => setOpen(false)}>✖</button>
           </div>
@@ -75,7 +75,7 @@ function ChatbotWidget() {
       ) : (
         <button
           onClick={() => setOpen(true)}
-          className="w-[50px] h-[50px] rounded-full bg-black text-white flex items-center justify-center shadow-lg"
+          className="w-[50px] h-[50px] rounded-full bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white flex items-center justify-center shadow-lg"
         >
           <FaRobot size={24} />
         </button>

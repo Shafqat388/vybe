@@ -152,7 +152,7 @@ function StoryCard({ storyData }) {
             {/* Caption shown centered at bottom */}
             {storyData?.caption && (
                <div className='absolute bottom-[80px] w-full text-center px-4 z-20'>
-                <p className='text-white text-base bg-black/70 inline-block px-4 py-2 rounded-md max-w-[90%]'>
+                <p className='text-white text-base bg-gradient-to-br from-gray-800 via-gray-900 to-black/70 inline-block px-4 py-2 rounded-md max-w-[90%]'>
                 {storyData.caption}
                 </p>
                </div>

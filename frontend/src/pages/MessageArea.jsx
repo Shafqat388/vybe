@@ -90,10 +90,10 @@ function MessageArea() {
   }, [messages, dispatch]);
 
   return (
-    <div className='w-full h-[100vh] bg-black relative'>
+    <div className='w-full h-[100vh] bg-gradient-to-br from-gray-800 via-gray-900 to-black relative'>
 
       {/* Header */}
-      <div className='w-full flex items-center gap-[15px] px-[20px] py-[10px] fixed top-0 z-[100] bg-black'>
+      <div className='w-full flex items-center gap-[15px] px-[20px] py-[10px] fixed top-0 z-[100] bg-gradient-to-br from-gray-800 via-gray-900 to-black'>
         <MdOutlineKeyboardBackspace className='text-white cursor-pointer w-[25px] h-[25px]' onClick={() => navigate(`/`)} />
         <div onClick={() => navigate(`/profile/${selectedUser.userName}`)} className='flex items-center gap-2'>
           <img src={selectedUser.profileImage || dp} alt="" className='w-[40px] h-[40px] rounded-full object-cover' />
@@ -114,7 +114,7 @@ function MessageArea() {
       </div>
 
       {/* Message Input */}
-      <div className='w-full h-[80px] fixed bottom-0 flex justify-center items-center bg-black z-[100]'>
+      <div className='w-full h-[80px] fixed bottom-0 flex justify-center items-center bg-gradient-to-br from-gray-800 via-gray-900 to-black z-[100]'>
         <form className='w-[90%] max-w-[800px] h-[80%] rounded-full bg-[#131616] flex items-center gap-[10px] px-[20px] relative' onSubmit={handleSendMessage}>
           {frontendImage && (
             <div className='w-[100px] h-[100px] rounded-2xl absolute top-[-120px] right-[10px] overflow-hidden'>

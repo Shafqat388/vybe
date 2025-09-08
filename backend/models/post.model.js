@@ -19,6 +19,10 @@ const postSchema = new mongoose.Schema({
     type: String,
     default: null  // ✅ Optional for text-only posts
   },
+  mediaPublicId: {               // ✅ Cloudinary public_id for media deletion
+    type: String,
+    default: null
+  },
   caption: {
     type: String,
     default: null  // ✅ Optional for media posts only

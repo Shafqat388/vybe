@@ -50,13 +50,26 @@ function Profile() {
     }
   };
 
+  const handleDeleteAccount = async () => {
+    const confirmed = window.confirm("Are you sure you want to delete your account? This cannot be undone.");
+    if (!confirmed) return;
+
+    try {
+      await axios.delete(`${serverUrl}/api/user/deleteAccount`, { withCredentials: true });
+      dispatch(setUserData(null));
+      navigate("/signin");
+    } catch (error) {
+      console.error("Error deleting account:", error);
+    }
+  };
+
   useEffect(() => {
     handleProfile();
     getAllLoops();
   }, [userName]);
 
   return (
-    <div className='w-full min-h-screen bg-black'>
+    <div className='w-full min-h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-black '>
       {/* Topbar */}
       <div className='w-full h-[80px] flex justify-between items-center px-[30px] text-white'>
         <MdOutlineKeyboardBackspace className='cursor-pointer w-[25px] h-[25px]' onClick={() => navigate("/")} />
@@ -71,8 +84,9 @@ function Profile() {
         </div>
         <div>
           <div className='font-semibold text-[22px] text-white'>{profileData?.name}</div>
-          <div className='text-[17px] text-[#ffffffe8]'>{profileData?.profession || "New User"}</div>
+          <div className='text-[17px] text-[#ffffffe8]'>{profileData?.profession }</div>
           <div className='text-[17px] text-[#ffffffe8]'>{profileData?.bio}</div>
+          <div className='text-[17px] text-[#ffffffe8]'>{profileData?.gender}</div>
         </div>
       </div>
 
@@ -94,17 +108,20 @@ function Profile() {
       </div>
 
       {/* Actions */}
-      <div className='w-full h-[80px] flex justify-center gap-[20px] mt-[10px]'>
+      <div className='w-full flex flex-col items-center gap-[10px] mt-[10px]'>
         {profileData?._id === userData._id ? (
-          <button onClick={() => navigate("/editprofile")} className='px-[10px] min-w-[150px] py-[5px] h-[40px] bg-white rounded-2xl'>Edit Profile</button>
-        ) : (
           <>
+            <button onClick={() => navigate("/editprofile")} className='px-[10px] min-w-[150px] py-[5px] h-[40px] bg-white rounded-2xl'>Edit Profile</button>
+            <button onClick={handleDeleteAccount} className='px-[10px] min-w-[150px] py-[5px] h-[40px] bg-red-600 text-white rounded-2xl'>Delete Account</button>
+          </>
+        ) : (
+          <div className='flex gap-[20px]'>
             <FollowButton tailwind='px-[10px] min-w-[150px] py-[5px] h-[40px] bg-white rounded-2xl' targetUserId={profileData?._id} onFollowChange={handleProfile} />
             <button className='px-[10px] min-w-[150px] py-[5px] h-[40px] bg-white rounded-2xl' onClick={() => {
               dispatch(setSelectedUser(profileData));
               navigate("/messageArea");
             }}>Message</button>
-          </>
+          </div>
         )}
       </div>
 
@@ -114,7 +131,7 @@ function Profile() {
           {["posts", "saved", "loops"].map(type => (
             <div
               key={type}
-              className={`${postType === type ? "bg-black text-white shadow-2xl shadow-black" : ""} w-[28%] h-[80%] flex justify-center items-center text-[19px] font-semibold rounded-full cursor-pointer hover:bg-black hover:text-white`}
+              className={`${postType === type ? "bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white shadow-2xl shadow-black" : ""} w-[28%] h-[80%] flex justify-center items-center text-[19px] font-semibold rounded-full cursor-pointer hover:bg-gradient-to-br from-gray-800 via-gray-900 to-black hover:text-white`}
               onClick={() => setPostType(type)}
             >
               {type.charAt(0).toUpperCase() + type.slice(1)}
